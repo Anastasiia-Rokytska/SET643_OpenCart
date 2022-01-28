@@ -27,12 +27,12 @@ namespace OpenCartTests.Pages
         public void ClickDeleteProductButton() => DeleteProductButton.Click();
 
 
-        
         public HomePage DeleteProduct()
         {
             ClickDeleteProductButton();
             return new HomePage(driver);
         }
+
 
         public HomePage EnterInputFieldForFirstProduct(string value)
         {

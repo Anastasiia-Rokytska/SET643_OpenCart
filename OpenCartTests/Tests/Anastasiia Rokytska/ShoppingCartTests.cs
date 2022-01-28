@@ -16,7 +16,71 @@ namespace OpenCartTests.Tests.Anastasiia_Rokytska
     public class ShoppingCartTests : TestRunner
     {
         private readonly string EMPTY_SHOPPING_CART_TEXT = "Your shopping cart is empty!";
-        protected override string OpenCartURL { get => "http://localhost"; }
+        protected override string OpenCartURL { get => "http://34.136.246.110"; }
+
+        User user1, user2, user3, user4;
+
+        public void CheckInputFieldEmptyShoppingCart(string data)
+        {
+            VerifyOneProductAdding();
+            HomePage homePage = new HomePage(driver).GoToShoppingCartPage().EnterInputFieldForFirstProduct(data);
+            VerifyEmptyShoppingCart();
+        }
+
+        public void CheckInputFieldNotEmptyShoppingCart(string data, string expected)
+        {
+            VerifyOneProductAdding();
+            HomePage homePage = new HomePage(driver).GoToShoppingCartPage().EnterInputFieldForFirstProduct(data);
+            string actual = new ShoppingCartPage(driver).GetInputFieldForFirstProductText();
+            DeleteProductFromShoppingCart();
+            Assert.AreEqual(expected, actual);
+
+        }
+
+
+        public void DeleteProductFromShoppingCart()
+        {
+            new HomePage(driver).GoToShoppingCartPage().DeleteProduct();
+        }
+
+
+        public void VerifyEmptyShoppingCart()
+        {
+            string actualResult = new HomePage(driver).GoToEmptyShoppingCartPage().GetEmptyShoppingCartText();
+            Assert.AreEqual(EMPTY_SHOPPING_CART_TEXT, actualResult);
+        }
+
+
+        public void VerifyOneProductAdding()
+        {
+            HomePage homepage = new HomePage(driver).GoToHomePage().GetProductDetails(0); ;
+            string price = new ProductDetailsPage(driver).GetPriceText();
+            ProductDetailsPage pd = new ProductDetailsPage(driver).AddToShoppingCart();
+            string totalPrice = homepage.GoToShoppingCartPage().GetTotalPriceText();
+            Assert.AreEqual(totalPrice, price);
+        }
+
+        public User CreateUser()
+        {
+            var rand = new Random();
+            string id = (rand.Next(1000)).ToString();
+            return User.CreateBuilder()
+              .SetFirstName("test" + id)
+              .SetLastName("test" + id)
+              .SetEMail("test" + id +"@gmail.com")
+              .SetTelephone("0671234567")
+              .SetPassword("qwerty")
+              .Build();
+        }
+
+
+        public void RegisterUser(User data)
+        {
+            RegisterPage registerPage = new HomePage(driver).GoToRegisterPage();
+            registerPage.FillRegisterForm(data);
+            registerPage.ClickAgreeCheckBox();
+            AccountSuccessPage successPage = registerPage.ClickContinueButtonSuccess();
+        }
 
         User user1, user2, user3, user4;
 
