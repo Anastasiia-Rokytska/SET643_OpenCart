@@ -1,10 +1,10 @@
-// ﻿using NUnit.Framework;
-// using OpenCartTests.Data;
-// using OpenCartTests.Pages;
-// using OpenCartTests.Tools;
+﻿using NUnit.Framework;
+using OpenCartTests.Data;
+using OpenCartTests.Pages;
+using OpenCartTests.Tools;
 
-// namespace OpenCartTests.Tests.Yurii_Kanafotskyi
-// {
+namespace OpenCartTests.Tests.Yurii_Kanafotskyi
+{
 //     public class CurrencyTests : TestRunner
 //     {
 //         protected override string OpenCartURL { get => "http://34.136.246.110"; }
@@ -75,4 +75,4 @@
 //             Assert.AreNotEqual(expected, actual);
 //         }
 //     }
-// }
+}
