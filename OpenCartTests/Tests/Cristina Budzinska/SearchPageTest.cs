@@ -1,18 +1,18 @@
-// ﻿using Allure.Commons;
-// using NUnit.Allure.Attributes;
-// using NUnit.Allure.Core;
-// using NUnit.Framework;
-// using OpenCartTests.Pages;
-// using OpenCartTests.Tools;
-// using OpenQA.Selenium.Support.UI;
-// using System;
-// using System.Collections.Generic;
-// using System.Linq;
-// using System.Text;
-// using System.Threading.Tasks;
+﻿using Allure.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
+using OpenCartTests.Pages;
+using OpenCartTests.Tools;
+using OpenQA.Selenium.Support.UI;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-// namespace OpenCartTests.Tests.Cristina_Budzinska
-// {
+namespace OpenCartTests.Tests.Cristina_Budzinska
+{
 //     [TestFixture]
 //     [AllureNUnit]
 //     [Category("SearchPage")]
@@ -125,7 +125,7 @@
 //             Assert.AreEqual(expectedResult, actualResult.SelectedOption.Text);
 //         }
 //     }
-// }
+}
 
 
 
