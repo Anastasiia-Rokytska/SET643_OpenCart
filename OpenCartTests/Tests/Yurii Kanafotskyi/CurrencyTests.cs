@@ -1,78 +1,78 @@
-﻿using NUnit.Framework;
-using OpenCartTests.Data;
-using OpenCartTests.Pages;
-using OpenCartTests.Tools;
+// ﻿using NUnit.Framework;
+// using OpenCartTests.Data;
+// using OpenCartTests.Pages;
+// using OpenCartTests.Tools;
 
-namespace OpenCartTests.Tests.Yurii_Kanafotskyi
-{
-    public class CurrencyTests : TestRunner
-    {
-        protected override string OpenCartURL { get => "http://34.136.246.110"; }
+// namespace OpenCartTests.Tests.Yurii_Kanafotskyi
+// {
+//     public class CurrencyTests : TestRunner
+//     {
+//         protected override string OpenCartURL { get => "http://34.136.246.110"; }
 
-        User user;
+//         User user;
 
-        [OneTimeSetUp]
-        public void BeforeAllMethods()
-        {
-            user = User.CreateBuilder()
-                .SetFirstName("Yurii")
-                .SetLastName("Hoidyk")
-                .SetEMail("yurii.hoidyk@gmail.com")
-                .SetTelephone("0637866103")
-                .SetPassword("seva_noob")
-                .Build();
-        }
+//         [OneTimeSetUp]
+//         public void BeforeAllMethods()
+//         {
+//             user = User.CreateBuilder()
+//                 .SetFirstName("Yurii")
+//                 .SetLastName("Hoidyk")
+//                 .SetEMail("yurii.hoidyk@gmail.com")
+//                 .SetTelephone("0637866103")
+//                 .SetPassword("seva_noob")
+//                 .Build();
+//         }
 
-        [Test]
-        public void HomePageFirstProductPriceDependingOnCurrency()
-        {
-            string expected = new HomePage(driver).GetFeaturedFirstProductPrice();
+//         [Test]
+//         public void HomePageFirstProductPriceDependingOnCurrency()
+//         {
+//             string expected = new HomePage(driver).GetFeaturedFirstProductPrice();
 
-            _ = new HomePage(driver).ChangeCurrencyOnHomePage()
-                                    .GetURL();
+//             _ = new HomePage(driver).ChangeCurrencyOnHomePage()
+//                                     .GetURL();
 
-            string actual = new HomePage(driver).GetFeaturedFirstProductPrice();
+//             string actual = new HomePage(driver).GetFeaturedFirstProductPrice();
 
-            Assert.AreNotEqual(expected, actual);
-        }
+//             Assert.AreNotEqual(expected, actual);
+//         }
 
-        [Test]
-        public void ProductPagePriceChangingDependingOnCurrency()
-        {
-            _ = new HomePage(driver).GetFirstProductDetails();
+//         [Test]
+//         public void ProductPagePriceChangingDependingOnCurrency()
+//         {
+//             _ = new HomePage(driver).GetFirstProductDetails();
 
-            string expected = new ProductDetailsPage(driver).GetPriceText();
+//             string expected = new ProductDetailsPage(driver).GetPriceText();
 
-            _ = new ProductDetailsPage(driver).ChangeCurrencyOnDetailsPage()
-                                              .GetURL();
+//             _ = new ProductDetailsPage(driver).ChangeCurrencyOnDetailsPage()
+//                                               .GetURL();
 
-            string actual = new ProductDetailsPage(driver).GetPriceText();
+//             string actual = new ProductDetailsPage(driver).GetPriceText();
 
-            Assert.AreNotEqual(expected, actual);
-        }
+//             Assert.AreNotEqual(expected, actual);
+//         }
 
-        [Test]
-        public void WishListPriceChangingDependingOnCurrency()
-        {
-            _ = new HomePage(driver).GoToLoginPage()
-                                    .SuccessfullLogin(user)
-                                    .GoToHomePage()
-                                    .GetFirstProductDetails()
-                                    .GetURL();
+//         [Test]
+//         public void WishListPriceChangingDependingOnCurrency()
+//         {
+//             _ = new HomePage(driver).GoToLoginPage()
+//                                     .SuccessfullLogin(user)
+//                                     .GoToHomePage()
+//                                     .GetFirstProductDetails()
+//                                     .GetURL();
 
-            _ = new ProductDetailsPage(driver).AddToWishList();
+//             _ = new ProductDetailsPage(driver).AddToWishList();
 
-            _ = new WishListPage(driver).GoToWishPage()
-                                        .GetURL();
+//             _ = new WishListPage(driver).GoToWishPage()
+//                                         .GetURL();
 
-            string expected = new WishListPage(driver).GetWishListFirstProductPrice();
+//             string expected = new WishListPage(driver).GetWishListFirstProductPrice();
 
-            _ = new WishListPage(driver).ChangeCurrencyOnWishListPage()
-                                        .GetURL();
+//             _ = new WishListPage(driver).ChangeCurrencyOnWishListPage()
+//                                         .GetURL();
 
-            string actual = new WishListPage(driver).GetWishListFirstProductPrice();
+//             string actual = new WishListPage(driver).GetWishListFirstProductPrice();
 
-            Assert.AreNotEqual(expected, actual);
-        }
-    }
-}
+//             Assert.AreNotEqual(expected, actual);
+//         }
+//     }
+// }
