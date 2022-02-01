@@ -1,13 +1,13 @@
-// using Allure.Commons;
-// using NUnit.Allure.Attributes;
-// using NUnit.Allure.Core;
-// using NUnit.Framework;
-// using OpenCartTests.Data;
-// using OpenCartTests.Pages;
-// using OpenCartTests.Tools;
+using Allure.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using NUnit.Framework;
+using OpenCartTests.Data;
+using OpenCartTests.Pages;
+using OpenCartTests.Tools;
 
-// namespace OpenCartTests.Tests.Shulga_Dmytro
-// {
+namespace OpenCartTests.Tests.Shulga_Dmytro
+{
 //     [TestFixture]
 //     [AllureNUnit]
 //     [Category("Feedback")]
@@ -62,4 +62,4 @@
 //             Assert.AreEqual(expected, actual);
 //         }
 //     }
-// }
+}
