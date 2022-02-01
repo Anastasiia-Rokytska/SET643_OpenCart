@@ -94,15 +94,15 @@ namespace OpenCartTests.Tests.Sereda_Natalia
         }
 
 
-        [AllureTag("Category")]
-        [AllureSeverity(SeverityLevel.normal)]
-        [AllureOwner("SN")]
-        [Test]
-        public void TabletsCategoryTest()
-        {
-            string CategoryExpected = "Tablets";
-            CategoryIsVisibleTest(CategoryExpected);
-        }
+//         [AllureTag("Category")]
+//         [AllureSeverity(SeverityLevel.normal)]
+//         [AllureOwner("SN")]
+//         [Test]
+//         public void TabletsCategoryTest()
+//         {
+//             string CategoryExpected = "Tablets";
+//             CategoryIsVisibleTest(CategoryExpected);
+//         }
 
         //[Test]
         //public void CamerasCategoryTest()
