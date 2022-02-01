@@ -1,19 +1,19 @@
-// using NUnit.Framework;
-// using Allure.Commons;
-// using NUnit.Allure.Attributes;
-// using NUnit.Allure.Core;
-// using OpenCartTests.Data;
-// using OpenCartTests.Pages;
-// using OpenCartTests.Tools;
-// using System;
-// using System.Collections.Generic;
-// using System.Linq;
-// using System.Text;
-// using System.Threading;
-// using System.Threading.Tasks;
+using NUnit.Framework;
+using Allure.Commons;
+using NUnit.Allure.Attributes;
+using NUnit.Allure.Core;
+using OpenCartTests.Data;
+using OpenCartTests.Pages;
+using OpenCartTests.Tools;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
 
-// namespace OpenCartTests.Tests.Nazar_Dykyy
-// {
+namespace OpenCartTests.Tests.Nazar_Dykyy
+{
 //     [TestFixture]
 //     [AllureNUnit]
 //     [Category("WishList")]
@@ -148,4 +148,4 @@
 //             Assert.IsTrue(actual.Contains("Image"));
 //           }     
 //     }
-// }
+}
