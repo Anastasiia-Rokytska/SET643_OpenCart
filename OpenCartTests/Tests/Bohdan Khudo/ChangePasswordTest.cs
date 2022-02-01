@@ -5,6 +5,7 @@ using OpenCartTests.Tools;
 using NUnit.Allure.Core;
 using NUnit.Allure.Attributes;
 using Allure.Commons;
+using OpenCartTests.Tests.Anastasiia_Rokytska;
 
 namespace OpenCartTests.Tests.Bohdan_Khudo
 {
@@ -17,10 +18,17 @@ namespace OpenCartTests.Tests.Bohdan_Khudo
         {
             get => "http://34.136.246.110";
         }
-        
 
-        private const string E_MAIL = "bahdan510@gmail.com";
-        private const string OLD_PASSWORD = "school22";
+        public void RegisterUser(User data)
+        {
+            RegisterPage registerPage = new HomePage(driver).GoToRegisterPage();
+            registerPage.FillRegisterForm(data);
+            registerPage.ClickAgreeCheckBox();
+            AccountSuccessPage successPage = registerPage.ClickContinueButtonSuccess();
+            AHeadComponent.LoggedUser = true;
+        }
+
+        
         private const string NEW_PASSWORD = "school33";
         private const string EXPECTED_AlERT_MESSAGE = "Success: Your password has been successfully updated.";
 
@@ -30,13 +38,14 @@ namespace OpenCartTests.Tests.Bohdan_Khudo
         [Test]
         public void ChangePassword()
         {
-            User user = User.CreateBuilder().SetEMail(E_MAIL).SetPassword(OLD_PASSWORD).Build();
-
+            ShoppingCartTests shoppingCartTests = new ShoppingCartTests();
+            User testUser = shoppingCartTests.CreateUser();
+            RegisterUser(testUser);
+            driver.Navigate().GoToUrl(OpenCartURL);
+            
             new HomePage(driver)
-                .GoToLoginPage()
-                .SuccessfullLogin(user);
-                
-            new MyAccountPage(driver).ClickhangeYourPassword();
+                .GoToMyAccountPage()
+                .ClickhangeYourPassword();            
 
             ChangePasswordPage changePasswordPage = new ChangePasswordPage(driver);
             changePasswordPage.PasswordField.SendKeys(NEW_PASSWORD);
@@ -47,7 +56,7 @@ namespace OpenCartTests.Tests.Bohdan_Khudo
             Assert.AreEqual(EXPECTED_AlERT_MESSAGE, myAccountMessagePage.GetAlertMessageText());
 
             myAccountMessagePage.Logout();
-            user = User.CreateBuilder().SetEMail(E_MAIL).SetPassword(NEW_PASSWORD).Build();
+            User user = User.CreateBuilder().SetEMail(testUser.EMail).SetPassword(NEW_PASSWORD).Build();
             new HomePage(driver)
                 .GoToLoginPage()
                 .SuccessfullLogin(user);

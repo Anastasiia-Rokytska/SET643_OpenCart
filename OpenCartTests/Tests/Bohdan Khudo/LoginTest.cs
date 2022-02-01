@@ -23,7 +23,7 @@ namespace OpenCartTests.Tests.Bohdan_Khudo
         [AllureSeverity(SeverityLevel.normal)]
         [AllureOwner("KhB")]
         [Test]
-        [TestCase(arg: new string[] { "bahdan510@gmail.com", "school22" })]
+        [TestCase(arg: new string[] { "bohdan510@gmail.com", "school22" })]
         public void LoginWithValidData(string[] userData)
         {
             User user = new UserBuilder().SetEMail(userData[0]).SetPassword(userData[1]).Build();

@@ -31,7 +31,7 @@ namespace OpenCartTests.Pages
             elements = driver.FindElements(By.XPath("//*[@id='content']/table/tbody[1]/tr[3]/td"));
             for (int i = 1; i < elements.Count; i++)
             {
-                string price = Regex.Replace(elements[i].Text.Trim(new char[] { '$', '€', '£' }), @"\s+", "").Replace('.', ','); 
+                string price = Regex.Replace(elements[i].Text.Trim(new char[] { '$', '€', '£' }), @"\s+", ""); 
                 _prices.Add(Double.Parse(price));
             }
 
